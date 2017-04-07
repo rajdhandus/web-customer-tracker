@@ -18,12 +18,18 @@ public class CustomerDAOImpl implements CustomerDAO {
 	private SessionFactory sessionFactory;
 
 	@Override
-	@Transactional
+	//@Transactional -- Services layer will maintain transactionality
 	public List<Customer> getCustomers() {
 		Session currentSession = sessionFactory.getCurrentSession();
 		Query<Customer> query = currentSession.createQuery("from Customer", Customer.class);
 		List<Customer> customers = query.getResultList();
 		return customers;
+	}
+
+	@Override
+	public void saveCustomer(Customer theCustomer) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.save(theCustomer);
 	}
 
 }
