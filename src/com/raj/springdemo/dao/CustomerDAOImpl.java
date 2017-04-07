@@ -13,17 +13,17 @@ import com.raj.springdemo.entity.Customer;
 
 @Repository
 public class CustomerDAOImpl implements CustomerDAO {
-
+	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
+
 	@Override
 	@Transactional
 	public List<Customer> getCustomers() {
-		Session session = sessionFactory.getCurrentSession();
-		Query<Customer> query = session.createQuery("from Customer", Customer.class);
-		List<Customer> result = query.getResultList();
-		return result;
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query<Customer> query = currentSession.createQuery("from Customer", Customer.class);
+		List<Customer> customers = query.getResultList();
+		return customers;
 	}
 
 }
