@@ -24,7 +24,6 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	@Transactional
 	public void save(Customer theCustomer) {
-		// TODO Auto-generated method stub
 		customerDAO.saveCustomer(theCustomer);
 		
 	}
@@ -32,8 +31,13 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	@Transactional
 	public Customer getCustomer(int id) {
-		// TODO Auto-generated method stub
 		return customerDAO.getCustomer(id);
+	}
+
+	@Override
+	@Transactional
+	public void deleteCustomer(int id) {
+		customerDAO.deleteCustomer(id);
 	}
 
 }
